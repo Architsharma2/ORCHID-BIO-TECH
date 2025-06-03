@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ORCHID BIO-TECH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Open+Sans&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Open Sans', sans-serif; 
+      overflow-x: hidden; 
+      padding-top: 4.5rem; 
+    }
+    .anime-font { font-family: 'Rubik Glitch', cursive; }
+    .glow-text {
+      background: linear-gradient(to right, #ffd700, #ff7e5f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    }
+    .bg-hero {
+      background-image: url('https://i.postimg.cc/sXLTNDT2/Whats-App-Image-2025-06-03-at-14-28-52-e94cfd9a.jpg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+    .nav-link {
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: #0f172a;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link:hover {
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      color: #1e3a8a;
+      transition: background-color 0.3s ease;
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+      text-align: right; /* Align mobile nav links to the right */
+    }
+    .mobile-nav-link:hover {
+      background-color: rgba(30, 58, 138, 0.1);
+    }
+    @keyframes navBounce {
+      0% { transform: translateY(-10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .nav-link:nth-child(1), .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-link:nth-child(2), .mobile-nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-link:nth-child(3), .mobile-nav-link:nth-child(3) { animation-delay: 0.3s; }
+    .nav-link:nth-child(4), .mobile-nav-link:nth-child(4) { animation-delay: 0.4s; }
+    .nav-link:nth-child(5), .mobile-nav-link:nth-child(5) { animation-delay: 0.5s; }
+    .nav-link:nth-child(6), .mobile-nav-link:nth-child(6) { animation-delay: 0.6s; }
+    /* Fallback for backdrop-blur */
+    @supports not (backdrop-filter: blur(8px)) {
+      nav {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+    /* Header container adjustments */
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    /* Right-align navigation and mobile button */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto; /* Push to the right */
+    }
+    /* Mobile nav container */
+    #mobile-nav {
+      text-align: right;
+      padding-right: 1rem; /* Add padding for better alignment */
+    }
+    /* Responsive adjustment for mobile */
+    @media (max-width: 640px) {
+      .bg-hero {
+        min-height: 80vh; /* Reduced height for mobile to fit content */
+      }
+      /* Adjust text size for better fit on mobile */
+      .hero-text h1 {
+        font-size: 2rem; /* Reduced from 3xl (30px) */
+      }
+      .hero-text p {
+        font-size: 1rem; /* Reduced from lg (18px) */
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#f7f4ed]">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-3 container">
+    <a href="about.html" class="text-[#003399] text-xl sm:text-2xl font-bold uppercase" style="font-family: 'Times New Roman', serif;">
+      ORCHID BIO-TECH
+    </a>
+
+    <div class="nav-container">
+      <button id="menu-toggle" class="md:hidden text-[#1e3a8a] text-2xl focus:outline-none" aria-label="Toggle Menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" class="hamburger"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="close hidden"/>
+        </svg>
+      </button>
+
+      <div class="hidden md:flex space-x-4 text-[#1e3a8a] font-medium">
+        <a href="about.html" class="nav-link uppercase">About</a>
+        <a href="#updates" class="nav-link uppercase">Updates</a>
+        <a href="admissions.html" class="nav-link uppercase">Admissions</a>
+        <a href="campus-life.html" class="nav-link uppercase">Campus Life</a>
+        <a href="community.html" class="nav-link uppercase">Community</a>
+        <a href="#contact" class="nav-link uppercase">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden md:hidden bg-white/90 px-4 pb-4">
+    <a href="about.html" class="mobile-nav-link uppercase">About</a>
+    <a href="#updates" class="mobile-nav-link uppercase">Updates</a>
+    <a href="admissions.html" class="mobile-nav-link uppercase">Admissions</a>
+    <a href="campus-life.html" class="mobile-nav-link uppercase">Campus Life</a>
+    <a href="community.html" class="mobile-nav-link uppercase">Community</a>
+    <a href="#contact" class="mobile-nav-link uppercase">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-hero relative flex items-center justify-center text-center">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative z-10 px-4 text-white hero-text">
+    <h1 class="glow-text anime-font text-3xl sm:text-5xl md:text-6xl leading-tight">Step Into the Future<br />of Biotechnology</h1>
+    <p class="mt-4 max-w-xl mx-auto text-lg drop-shadow-md">Explore a vibrant academic culture enriched with innovation and nature.</p>
+    <button onclick="document.getElementById('updates').scrollIntoView({ behavior: 'smooth' })"
+      class="mt-6 bg-[#1e3a8a] text-white px-6 py-3 text-sm font-semibold rounded-md hover:bg-[#12265a] transition shadow-lg animate-bounce">
+      Start Your Journey
+    </button>
+  </div>
+  <div class="absolute bottom-6 w-full flex justify-center z-10">
+    <i class="fas fa-angle-down fa-2x text-white animate-bounce"></i>
+  </div>
+</section>
+
+<!-- Updates -->
+<section id="updates" class="py-20 px-6 bg-[#f7f4ed]">
+  <h2 class="text-3xl font-bold text-center text-[#1e3a8a] mb-10">Latest Updates</h2>
+  <div class="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+    <div class="p-5 bg-white rounded-xl shadow-lg">
+      <h4 class="text-lg font-semibold text-[#1e3a8a]">New Admissions Open</h4>
+      <p class="text-gray-600 mt-2">Apply now for the 2025-26 session. Secure your spot in the next generation of biotech leaders.</p>
+    </div>
+    <div class="p-5 bg-white rounded-xl shadow-lg">
+      <h4 class="text-lg font-semibold text-[#1e3a8a]">BioTech Fest 2025</h4>
+      <p class="text-gray-600 mt-2">Join our annual celebration of science, cosplay, and innovation happening in August.</p>
+    </div>
+    <div class="p-5 bg-white rounded-xl shadow-lg">
+      <h4 class="text-lg font-semibold text-[#1e3a8a]">Anime Nature Collab</h4>
+      <p class="text-gray-600 mt-2">New anime-themed nature mural unveiled in campus garden – a blend of science and imagination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-20 px-6 bg-gradient-to-b from-[#f7f4ed] to-[#dce1ff]">
+  <h2 class="text-3xl font-bold text-center text-[#1e3a8a] mb-10">Contact Us</h2>
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+    <form class="grid gap-6">
+      <div>
+        <label class="block text-sm font-semibold text-[#1e3a8a]">Name</label>
+        <input type="text" class="w-full mt-1 px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#1e3a8a]" placeholder="Your Name"/>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold text-[#1e3a8a]">Email</label>
+        <input type="email" class="w-full mt-1 px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#1e3a8a]" placeholder="you@example.com"/>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold text-[#1e3a8a]">Message</label>
+        <textarea rows="4" class="w-full mt-1 px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#1e3a8a]" placeholder="Your message here..."></textarea>
+      </div>
+      <button type="submit" class="bg-[#1e3a8a] text-white px-6 py-2 rounded-md font-semibold hover:bg-[#12265a] transition shadow-md">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#1e3a8a] text-white py-8 text-center text-sm mt-10">
+  <p class="text-2xl font-bold mb-2" style="font-family: cursive;">Made by Archit Sharma 🌸✨</p>
+  <p class="text-gray-300 text-sm mb-4" style="font-family: cursive;">Crafted using Tailwind CSS, anime-inspired animations & cool fonts just for you.</p>
+  <div class="flex justify-center space-x-6 text-white text-lg mb-4">
+    <a href="https://www.facebook.com/profile.php?id=100042690039524" target="_blank" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/archit_sharma_6" target="_blank" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/archit-sharma-bca" target="_blank" class="hover:text-blue-200"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://youtube.com/@architsharma-d2w" target="_blank" class="hover:text-red-400"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p class="text-xs text-gray-400">© 2025 Orchid Bio-Tech. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const hamburger = menuToggle.querySelector('.hamburger');
+  const closeIcon = menuToggle.querySelector('.close');
+
+  menuToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    hamburger.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+    menuToggle.setAttribute('aria-expanded', mobileNav.classList.contains('hidden') ? 'false' : 'true');
+  });
+
+  document.querySelectorAll('#mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      hamburger.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>

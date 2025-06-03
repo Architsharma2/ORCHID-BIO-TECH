@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community - ORCHID BIO-TECH</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/white-diamond.png'), #f7f4ed;
+      background-repeat: repeat;
+      background-attachment: fixed;
+      padding-top: 4.5rem;
+      min-height: 100vh;
+      overflow-x: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .font-header {
+      font-family: 'Playfair Display', serif;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes navBounce {
+      0% { transform: translateY(-10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #1e3a8a;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      color: #1e3a8a;
+      transition: background-color 0.3s ease;
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+      text-align: right; /* Align mobile nav links to the right */
+    }
+
+    .mobile-nav-link:hover {
+      background-color: rgba(30, 58, 138, 0.1);
+    }
+
+    /* Animation delays for nav links */
+    .nav-link:nth-child(1), .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-link:nth-child(2), .mobile-nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-link:nth-child(3), .mobile-nav-link:nth-child(3) { animation-delay: 0.3s; }
+    .nav-link:nth-child(4), .mobile-nav-link:nth-child(4) { animation-delay: 0.4s; }
+    .nav-link:nth-child(5), .mobile-nav-link:nth-child(5) { animation-delay: 0.5s; }
+    .nav-link:nth-child(6), .mobile-nav-link:nth-child(6) { animation-delay: 0.6s; }
+    .nav-link:nth-child(7), .mobile-nav-link:nth-child(7) { animation-delay: 0.7s; }
+
+    .glow-btn {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 5px 15px rgba(30, 58, 138, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-block;
+    }
+
+    .glow-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    }
+
+    .header-hide {
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+
+    .header-show {
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+    }
+
+    /* Fallback for backdrop-blur */
+    @supports not (backdrop-filter: blur(8px)) {
+      header {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    /* Header container adjustments */
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Right-align navigation and mobile button */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto; /* Push to the right */
+    }
+
+    /* Mobile nav container */
+    #mobile-nav {
+      text-align: right;
+      padding-right: 1rem; /* Add padding for better alignment */
+    }
+
+    /* Hero section container */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f7f4ed;
+    }
+
+    /* Image styling */
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* Overlay text */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Responsive hero text */
+    @media (max-width: 640px) {
+      .hero-container {
+        height: 50vh;
+      }
+      .hero-overlay h2 {
+        font-size: 1.875rem;
+      }
+      .hero-overlay p {
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-[#1e3a8a]">
+
+  <!-- Hide-on-Scroll Header with Mobile Menu -->
+  <header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-white bg-opacity-30 backdrop-blur-md shadow-sm header-show">
+    <div class="container">
+      <h1 class="text-xl font-header font-semibold text-gray-800">ORCHID BIO-TECH</h1>
+
+      <div class="nav-container">
+        <button id="menu-btn" class="md:hidden text-[#1e3a8a] focus:outline-none" aria-label="Toggle mobile menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" class="hamburger"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="close hidden"/>
+          </svg>
+        </button>
+
+        <nav class="hidden md:flex space-x-6 text-[#1e3a8a] font-medium text-sm uppercase">
+          <a href="index.html" class="nav-link uppercase">Home</a>
+          <a href="about.html" class="nav-link uppercase">About</a>
+          <a href="index.html" class="nav-link uppercase">Updates</a>
+          <a href="admissions.html" class="nav-link uppercase">Admissions</a>
+          <a href="campus-life.html" class="nav-link uppercase">Campus Life</a>
+          <a href="community.html" class="nav-link uppercase">Community</a>
+          <a href="index.html" class="nav-link uppercase">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="hidden md:hidden mt-4 w-full text-sm uppercase font-medium">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="index.html" class="mobile-nav-link">Updates</a>
+      <a href="admissions.html" class="mobile-nav-link">Admissions</a>
+      <a href="campus-life.html" class="mobile-nav-link">Campus Life</a>
+      <a href="community.html" class="mobile-nav-link">Community</a>
+      <a href="index.html" class="mobile-nav-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative">
+    <div class="hero-container">
+      <picture>
+        <source srcset="https://i.postimg.cc/CKxbXzjF/community.jpg" type="image/jpeg"/>
+        <img src="https://i.postimg.cc/CKxbXzjF/community.jpg" alt="Community gathering with full group visible" class="hero-image"/>
+      </picture>
+      <div class="hero-overlay">
+        <h2 class="font-header text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">Our Community, Our Strength</h2>
+        <p class="text-base sm:text-lg max-w-xl mx-auto text-white">We believe in collaboration, social responsibility, and a culture of learning beyond the classroom.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Content -->
+  <section class="max-w-6xl mx-auto px-6 py-12 bg-white bg-opacity-90 mt-8 rounded-xl shadow-lg">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-6 font-header text-center text-rose-600">Community Engagement</h2>
+    <div class="space-y-4 text-base leading-relaxed text-gray-800">
+      <p>🌿 We host regular plantation drives to expand our green campus and contribute to a healthier planet.</p>
+      <p>🤝 Our students volunteer in nearby villages, offering education support and healthcare awareness campaigns.</p>
+      <p>🧬 Clubs and societies organize events bringing together students passionate about environmental sustainability, technology, and culture.</p>
+    </div>
+    <div class="flex justify-center mt-8">
+      <a href="about.html" class="glow-btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mt-12 mb-6">
+    <p class="text-sm text-gray-700">© 2025 ORCHID BIO-TECH • Designed by Archit Sharma</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburgerIcon = menuBtn.querySelector('.hamburger');
+    const closeIcon = menuBtn.querySelector('.close');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+      hamburgerIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    let lastScrollTop = 0;
+    const header = document.getElementById('siteHeader');
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        header.classList.remove('header-show');
+        header.classList.add('header-hide');
+      } else {
+        header.classList.remove('header-hide');
+        header.classList.add('header-show');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, { passive: true });
+  </script>
+</body>
+</html>

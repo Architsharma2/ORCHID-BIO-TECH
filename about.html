@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - ORCHID BIO-TECH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/flowers.png'), #f7f4ed;
+      background-repeat: repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-top: 4.5rem; /* Match header height */
+    }
+
+    .font-header {
+      font-family: 'Playfair Display', serif;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes navBounce {
+      0% { transform: translateY(-10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .hover-zoom {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-zoom:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-link {
+      display: inline-block;
+      position: relative;
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: #0f172a;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      color: #1e3a8a;
+      transition: background-color 0.3s ease;
+      opacity: 0;
+      animation: navBounce 0.6s ease-out forwards;
+      text-align: right; /* Align mobile nav links to the right */
+    }
+
+    .mobile-nav-link:hover {
+      background-color: rgba(30, 58, 138, 0.1);
+    }
+
+    /* Animation delays for nav links */
+    .nav-link:nth-child(1), .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-link:nth-child(2), .mobile-nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-link:nth-child(3), .mobile-nav-link:nth-child(3) { animation-delay: 0.3s; }
+    .nav-link:nth-child(4), .mobile-nav-link:nth-child(4) { animation-delay: 0.4s; }
+    .nav-link:nth-child(5), .mobile-nav-link:nth-child(5) { animation-delay: 0.5s; }
+    .nav-link:nth-child(6), .mobile-nav-link:nth-child(6) { animation-delay: 0.6s; }
+    .nav-link:nth-child(7), .mobile-nav-link:nth-child(7) { animation-delay: 0.7s; }
+
+    /* Fallback for backdrop-blur */
+    @supports not (backdrop-filter: blur(8px)) {
+      header {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    /* Responsive hero text */
+    @media (max-width: 640px) {
+      .hero-overlay h2 {
+        font-size: 1.875rem; /* 30px */
+      }
+      .hero-overlay p {
+        font-size: 0.875rem; /* 14px */
+      }
+    }
+
+    /* Header container adjustments */
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Right-align navigation and mobile button */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem; /* Space between button and nav */
+      margin-left: auto; /* Push to the right */
+    }
+
+    /* Mobile nav container */
+    #mobile-nav {
+      text-align: right; /* Align mobile menu to the right */
+      padding-right: 1rem; /* Add padding for better alignment */
+    }
+  </style>
+</head>
+
+<body class="text-[#1e3a8a]">
+
+  <!-- Header with Mobile Menu -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-white bg-opacity-30 backdrop-blur-md shadow-sm">
+    <div class="container">
+      <h1 class="text-xl font-header font-semibold text-gray-800">ORCHID BIO-TECH</h1>
+
+      <div class="nav-container">
+        <button id="menu-btn" class="md:hidden text-[#1e3a8a] focus:outline-none" aria-label="Toggle mobile menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" class="hamburger"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="close hidden"/>
+          </svg>
+        </button>
+
+        <nav class="hidden md:flex space-x-4 text-sm uppercase font-medium">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="index.html" class="nav-link">Updates</a>
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="campus-life.html" class="nav-link">Campus Life</a>
+          <a href="community.html" class="nav-link">Community</a>
+          <a href="index.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="hidden md:hidden mt-4 space-y-2 text-sm uppercase font-medium">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="index.html" class="mobile-nav-link">Updates</a>
+      <a href="admissions.html" class="mobile-nav-link">Admissions</a>
+      <a href="campus-life.html" class="mobile-nav-link">Campus Life</a>
+      <a href="community.html" class="mobile-nav-link">Community</a>
+      <a href="index.html" class="mobile-nav-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[70vh] flex items-center justify-center bg-cover bg-center text-white text-center hero-overlay" style="background-image: url('https://cdnb.artstation.com/p/assets/images/images/030/088/533/large/flipery-flop-kingdom-fruits.jpg?1599576583');">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative z-10 px-4">
+      <h2 class="font-header text-3xl sm:text-5xl font-bold mb-4 drop-shadow-lg">Rooted in Nature, Growing with Knowledge</h2>
+      <p class="text-base sm:text-lg max-w-xl mx-auto drop-shadow-md">ORCHID BIO-TECH celebrates the beauty of nature and the power of biotechnology to nurture a sustainable future.</p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="text-3xl font-bold mb-4 font-header text-center">About Our Green Campus</h2>
+    <p class="text-lg text-center mb-10">
+      At ORCHID BIO-TECH, our campus is not only an educational haven but also a lush ecosystem of diverse plant species.
+    </p>
+
+    <!-- Tree Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-zoom">
+        <img src="https://i.postimg.cc/XvKkxL7P/mangotree.jpg" alt="Mango Tree" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2 font-header">Mango Tree</h3>
+          <p class="text-sm">Symbol of vitality and growth, mango trees bear fruit seasonally and offer shade to students.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-zoom">
+        <img src="https://i.postimg.cc/9QHB5KSM/image-3.jpg" alt="Orchid Blossoms" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2 font-header">Orchid Blossoms</h3>
+          <p class="text-sm">Delicate and rare, orchids reflect our commitment to precision and the wonders of nature.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-zoom">
+        <img src="https://i.postimg.cc/FstQ8byZ/neemtree.jpg" alt="Neem Tree" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2 font-header">Neem Tree</h3>
+          <p class="text-sm">Neem trees represent Ayurvedic roots, offering medicinal and environmental benefits.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-zoom">
+        <img src="https://i.postimg.cc/qvqqMXF3/banayantree.jpg" alt="Banyan Tree" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2 font-header">Banyan Tree</h3>
+          <p class="text-sm">Symbol of wisdom and strength, banyan trees near our library are ideal for quiet study.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-zoom">
+        <img src="https://i.postimg.cc/Xv8FC9FW/gulmohartree.jpg" alt="Gulmohar Tree" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2 font-header">Gulmohar</h3>
+          <p class="text-sm">With bright orange flowers, Gulmohar trees light up our walkways with seasonal charm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mb-6 text-sm text-gray-600">
+    © 2025 ORCHID BIO-TECH • Designed by Archit Sharma
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburgerIcon = menuBtn.querySelector('.hamburger');
+    const closeIcon = menuBtn.querySelector('.close');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+      hamburgerIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
